@@ -110,7 +110,7 @@ export function RoastForm() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <Card className="p-6 sm:p-8">
+      <Card className="p-6 sm:p-8 border-white/[0.06]">
         {/* Required Fields */}
         <div className="space-y-6">
           <Textarea
@@ -134,7 +134,7 @@ export function RoastForm() {
           />
 
           {/* Stage Selector (visual chips) */}
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-2">
             <label className="text-sm font-medium text-[var(--foreground)]">
               Current Stage *
             </label>
@@ -146,15 +146,15 @@ export function RoastForm() {
                   onClick={() => updateField("stage", opt.value)}
                   className={`px-4 py-2.5 rounded-xl text-sm font-medium border transition-all duration-200 cursor-pointer ${
                     form.stage === opt.value
-                      ? "bg-[var(--accent)] text-white border-[var(--accent)] shadow-md shadow-red-500/20"
-                      : "bg-[var(--surface)] text-[var(--foreground)] border-[var(--border-color)] hover:border-[var(--accent)]/50"
+                      ? "bg-gradient-to-r from-[var(--accent)] to-[#ef4444] text-white border-transparent shadow-lg shadow-orange-500/20"
+                      : "bg-[var(--surface-elevated)] text-[var(--muted)] border-white/[0.06] hover:border-[var(--accent)]/40 hover:text-[var(--foreground)]"
                   }`}
                 >
                   {opt.emoji} {opt.label}
                 </button>
               ))}
             </div>
-            {errors.stage && <p className="text-sm text-red-500">{errors.stage}</p>}
+            {errors.stage && <p className="text-sm text-red-400">{errors.stage}</p>}
           </div>
 
           <Input
@@ -170,7 +170,7 @@ export function RoastForm() {
         <button
           type="button"
           onClick={() => setShowOptional(!showOptional)}
-          className="flex items-center gap-2 mt-6 text-sm font-medium text-[var(--muted)] hover:text-[var(--foreground)] transition-colors cursor-pointer"
+          className="flex items-center gap-2 mt-6 text-sm font-medium text-[var(--muted)] hover:text-[var(--accent)] transition-colors cursor-pointer"
         >
           {showOptional ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           {showOptional ? "Hide" : "Show"} optional details (better roast!)
@@ -178,7 +178,7 @@ export function RoastForm() {
 
         {/* Optional Fields */}
         {showOptional && (
-          <div className="space-y-4 mt-4 pt-4 border-t border-[var(--border-color)] animate-fade-in">
+          <div className="space-y-4 mt-4 pt-4 border-t border-white/[0.06] animate-fade-in">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Select
                 id="founderType"
@@ -228,8 +228,8 @@ export function RoastForm() {
                   onClick={() => updateField(toggle.key, !form[toggle.key])}
                   className={`px-4 py-2 rounded-xl text-sm font-medium border transition-all cursor-pointer ${
                     form[toggle.key]
-                      ? "bg-green-50 text-green-700 border-green-300"
-                      : "bg-[var(--surface)] text-[var(--muted)] border-[var(--border-color)] hover:border-[var(--muted)]"
+                      ? "bg-green-500/10 text-green-400 border-green-500/30"
+                      : "bg-[var(--surface-elevated)] text-[var(--muted)] border-white/[0.06] hover:border-[var(--muted)]/30"
                   }`}
                 >
                   {form[toggle.key] ? "✓" : "○"} {toggle.label}
@@ -259,7 +259,7 @@ export function RoastForm() {
             <Flame className="w-5 h-5" />
             Generate My Roast
           </Button>
-          <p className="text-xs text-[var(--muted)] text-center mt-3">
+          <p className="text-xs text-[var(--muted)]/60 text-center mt-3">
             Free • Takes ~15 seconds • Results are public by default
           </p>
         </div>

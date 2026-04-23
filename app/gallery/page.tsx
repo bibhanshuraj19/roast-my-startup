@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
-import { getScoreBracket, INDUSTRY_OPTIONS, SAMPLE_ROASTS } from "@/lib/utils/constants";
+import { getScoreBracket, SAMPLE_ROASTS } from "@/lib/utils/constants";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -81,7 +81,7 @@ export default function GalleryPage() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
-          <h1 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl font-bold mb-4">
+          <h1 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl font-bold mb-4 text-[var(--foreground)]">
             🏆 Roast Gallery
           </h1>
           <p className="text-[var(--muted)] text-lg max-w-lg mx-auto">
@@ -91,14 +91,14 @@ export default function GalleryPage() {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
           {FILTER_OPTIONS.map((filter) => (
             <button
               key={filter}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
                 filter === "All"
-                  ? "bg-[var(--foreground)] text-[var(--background)]"
-                  : "bg-[var(--surface)] text-[var(--muted)] border border-[var(--border-color)] hover:border-[var(--foreground)] hover:text-[var(--foreground)]"
+                  ? "bg-gradient-to-r from-[var(--accent)] to-[#ef4444] text-white shadow-lg shadow-orange-500/20"
+                  : "bg-[var(--surface)] text-[var(--muted)] border border-white/[0.06] hover:border-[var(--accent)]/40 hover:text-[var(--foreground)]"
               }`}
             >
               {filter}
@@ -111,23 +111,29 @@ export default function GalleryPage() {
           {sorted.map((roast, i) => {
             const bracket = getScoreBracket(roast.score);
             return (
-              <Card key={i} hover className="flex flex-col cursor-pointer">
+              <Card key={i} hover className="flex flex-col cursor-pointer relative overflow-hidden">
+                {/* Score-colored top accent line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2px]"
+                  style={{ background: `linear-gradient(90deg, ${bracket.color}, transparent)` }}
+                />
+
                 {/* Header row */}
                 <div className="flex items-center justify-between mb-3">
                   <Badge variant="muted">{roast.industry}</Badge>
                   <div className="flex items-baseline gap-1">
                     <span
                       className="text-2xl font-bold font-[family-name:var(--font-heading)]"
-                      style={{ color: bracket.color }}
+                      style={{ color: bracket.color, textShadow: `0 0 15px ${bracket.color}30` }}
                     >
                       {roast.score}
                     </span>
-                    <span className="text-xs text-[var(--muted)]">/100</span>
+                    <span className="text-xs text-[var(--muted)]/60">/100</span>
                   </div>
                 </div>
 
                 {/* Idea */}
-                <h3 className="font-semibold text-sm mb-2 line-clamp-2">
+                <h3 className="font-semibold text-sm mb-2 text-[var(--foreground)] line-clamp-2">
                   &ldquo;{roast.idea}&rdquo;
                 </h3>
 
@@ -137,11 +143,11 @@ export default function GalleryPage() {
                 </p>
 
                 {/* Badge */}
-                <div className="pt-3 border-t border-[var(--border-color)]">
+                <div className="pt-3 border-t border-white/[0.06]">
                   <span
                     className="text-xs font-semibold px-2 py-1 rounded-full"
                     style={{
-                      backgroundColor: `${bracket.color}15`,
+                      backgroundColor: `${bracket.color}10`,
                       color: bracket.color,
                     }}
                   >
@@ -154,13 +160,13 @@ export default function GalleryPage() {
         </div>
 
         {/* Load more */}
-        <div className="text-center mt-10">
-          <p className="text-sm text-[var(--muted)]">
+        <div className="text-center mt-12">
+          <p className="text-sm text-[var(--muted)]/60">
             More roasts coming as people submit their ideas!
           </p>
           <Link
             href="/roast"
-            className="inline-block mt-4 px-6 py-3 bg-[var(--accent)] text-white rounded-xl font-semibold hover:bg-[var(--accent-dark)] transition-colors"
+            className="inline-block mt-4 px-6 py-3 bg-gradient-to-r from-[var(--accent)] to-[#ef4444] text-white rounded-xl font-semibold hover:brightness-110 transition-all shadow-lg shadow-orange-500/20"
           >
             🔥 Add Your Roast
           </Link>

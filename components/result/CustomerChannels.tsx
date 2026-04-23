@@ -3,8 +3,8 @@ import { Users } from "lucide-react";
 
 export function CustomerChannels({ items }: { items: string[] }) {
   return (
-    <Card>
-      <h3 className="font-semibold text-sm text-purple-600 uppercase tracking-wider mb-4 flex items-center gap-2">
+    <Card className="bg-purple-500/[0.03] border-purple-500/10">
+      <h3 className="font-semibold text-sm text-purple-400 uppercase tracking-wider mb-4 flex items-center gap-2">
         <Users className="w-4 h-4" />
         Where to Find First Customers
       </h3>
@@ -12,7 +12,7 @@ export function CustomerChannels({ items }: { items: string[] }) {
         {items.map((item, i) => (
           <span
             key={i}
-            className="px-3 py-1.5 rounded-lg bg-purple-50 text-purple-700 text-sm font-medium border border-purple-200/50"
+            className="px-3 py-1.5 rounded-lg bg-purple-500/10 text-purple-300 text-sm font-medium border border-purple-500/10"
           >
             {item}
           </span>

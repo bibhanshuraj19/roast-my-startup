@@ -39,8 +39,8 @@ export function ShareActions({ slug, shareText, score }: ShareActionsProps) {
       </h3>
 
       {/* Share text preview */}
-      <div className="bg-[var(--surface)] border border-[var(--border-color)] rounded-xl p-4 mb-4 max-w-md mx-auto">
-        <p className="text-sm text-[var(--foreground)] italic">&ldquo;{shareText}&rdquo;</p>
+      <div className="bg-[var(--surface-elevated)] border border-white/[0.06] rounded-xl p-4 mb-4 max-w-md mx-auto">
+        <p className="text-sm text-[var(--foreground)]/80 italic">&ldquo;{shareText}&rdquo;</p>
       </div>
 
       <div className="flex items-center justify-center gap-3 flex-wrap">
@@ -72,7 +72,7 @@ export function ShareActions({ slug, shareText, score }: ShareActionsProps) {
         >
           {copied ? (
             <>
-              <Check className="w-4 h-4 text-green-600" />
+              <Check className="w-4 h-4 text-green-400" />
               Copied!
             </>
           ) : (

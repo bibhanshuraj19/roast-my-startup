@@ -7,10 +7,10 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 
 const variantStyles: Record<string, string> = {
   default: "bg-[var(--accent)]/10 text-[var(--accent)]",
-  success: "bg-green-100 text-green-700",
-  warning: "bg-amber-100 text-amber-700",
-  danger: "bg-red-100 text-red-700",
-  muted: "bg-neutral-100 text-neutral-600",
+  success: "bg-green-500/10 text-green-400",
+  warning: "bg-amber-500/10 text-amber-400",
+  danger: "bg-red-500/10 text-red-400",
+  muted: "bg-white/5 text-[var(--muted)]",
 };
 
 export function Badge({
@@ -22,7 +22,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold",
+        "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold",
         variantStyles[variant],
         className
       )}

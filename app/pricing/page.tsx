@@ -80,8 +80,8 @@ export default function PricingPage() {
     <div className="py-12 sm:py-20 px-4">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl font-bold mb-4">
+        <div className="text-center mb-14">
+          <h1 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl font-bold mb-4 text-[var(--foreground)]">
             Simple, Honest Pricing
           </h1>
           <p className="text-[var(--muted)] text-lg max-w-md mx-auto">
@@ -96,25 +96,25 @@ export default function PricingPage() {
               key={i}
               className={`relative flex flex-col ${
                 tier.accent
-                  ? "border-[var(--accent)] shadow-lg shadow-red-500/10 scale-[1.02]"
-                  : ""
+                  ? "border-[var(--accent)]/30 shadow-xl shadow-orange-500/10 scale-[1.02] gradient-border"
+                  : "border-white/[0.06]"
               }`}
             >
               {tier.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-[var(--accent)] text-white text-xs font-bold px-3 py-1 rounded-full">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <span className="bg-gradient-to-r from-[var(--accent)] to-[#ef4444] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg shadow-orange-500/30">
                     Most Popular
                   </span>
                 </div>
               )}
 
               <div className="mb-6">
-                <h3 className="font-semibold text-lg mb-1">{tier.name}</h3>
+                <h3 className="font-semibold text-lg mb-1 text-[var(--foreground)]">{tier.name}</h3>
                 <p className="text-sm text-[var(--muted)] mb-4">
                   {tier.description}
                 </p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold font-[family-name:var(--font-heading)]">
+                  <span className="text-4xl font-bold font-[family-name:var(--font-heading)] text-[var(--foreground)]">
                     {tier.price}
                   </span>
                   {tier.period && (
@@ -130,10 +130,10 @@ export default function PricingPage() {
                   <li key={j} className="flex items-start gap-2 text-sm">
                     <Check
                       className={`w-4 h-4 shrink-0 mt-0.5 ${
-                        tier.accent ? "text-[var(--accent)]" : "text-green-600"
+                        tier.accent ? "text-[var(--accent)]" : "text-green-400"
                       }`}
                     />
-                    <span>{feature}</span>
+                    <span className="text-[var(--foreground)]/80">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -151,11 +151,11 @@ export default function PricingPage() {
         </div>
 
         {/* FAQ or trust line */}
-        <div className="text-center mt-12 space-y-2">
+        <div className="text-center mt-14 space-y-2">
           <p className="text-sm text-[var(--muted)]">
             💳 Secure payments via Razorpay • No subscription traps • Cancel anytime
           </p>
-          <p className="text-xs text-[var(--muted)]">
+          <p className="text-xs text-[var(--muted)]/50">
             All prices are in INR. GST included where applicable.
           </p>
         </div>

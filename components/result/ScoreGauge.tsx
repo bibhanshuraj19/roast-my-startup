@@ -23,7 +23,6 @@ export function ScoreGauge({ score }: ScoreGaugeProps) {
     function animate(now: number) {
       const elapsed = now - start;
       const t = Math.min(elapsed / duration, 1);
-      // Ease out cubic
       const eased = 1 - Math.pow(1 - t, 3);
       setAnimatedScore(Math.round(eased * score));
       if (t < 1) requestAnimationFrame(animate);
@@ -33,7 +32,13 @@ export function ScoreGauge({ score }: ScoreGaugeProps) {
   }, [score]);
 
   return (
-    <div className="score-gauge mx-auto">
+    <div
+      className="score-gauge mx-auto"
+      style={{
+        "--score-color": bracket.color,
+        filter: `drop-shadow(0 0 25px ${bracket.color}30)`,
+      } as React.CSSProperties}
+    >
       <svg
         viewBox="0 0 180 180"
         className="w-full h-full"
@@ -45,7 +50,7 @@ export function ScoreGauge({ score }: ScoreGaugeProps) {
           cy="90"
           r={radius}
           fill="none"
-          stroke="var(--border-color)"
+          stroke="rgba(255,255,255,0.06)"
           strokeWidth="10"
         />
         {/* Progress arc */}
@@ -67,13 +72,16 @@ export function ScoreGauge({ score }: ScoreGaugeProps) {
       <div className="score-gauge-text">
         <span
           className="text-5xl font-bold font-[family-name:var(--font-heading)]"
-          style={{ color: bracket.color }}
+          style={{
+            color: bracket.color,
+            textShadow: `0 0 20px ${bracket.color}40`,
+          }}
         >
           {animatedScore}
         </span>
         <span className="text-sm text-[var(--muted)] font-medium">/100</span>
         <span
-          className="text-xs font-semibold mt-1 px-2 py-0.5 rounded-full"
+          className="text-xs font-semibold mt-1.5 px-3 py-1 rounded-full"
           style={{
             backgroundColor: `${bracket.color}15`,
             color: bracket.color,

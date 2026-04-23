@@ -12,21 +12,21 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-[var(--accent)] text-white hover:bg-[var(--accent-dark)] shadow-lg shadow-red-500/20 hover:shadow-red-500/30",
+    "bg-gradient-to-r from-[var(--accent)] to-[#ef4444] text-white hover:brightness-110 shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30",
   secondary:
-    "bg-[var(--foreground)] text-[var(--background)] hover:opacity-90",
+    "bg-[var(--surface-elevated)] text-[var(--foreground)] hover:bg-[var(--surface-hover)] border border-[var(--border-color)]",
   ghost:
-    "bg-transparent text-[var(--foreground)] hover:bg-[var(--surface-hover)]",
+    "bg-transparent text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-white/5",
   danger:
-    "bg-red-600 text-white hover:bg-red-700",
+    "bg-red-600/90 text-white hover:bg-red-600 shadow-lg shadow-red-500/20",
   outline:
-    "bg-transparent text-[var(--foreground)] border-2 border-[var(--border-color)] hover:border-[var(--foreground)]",
+    "bg-transparent text-[var(--foreground)] border border-[var(--border-color)] hover:border-[var(--muted)] hover:bg-white/[0.03]",
 };
 
 const sizes: Record<ButtonSize, string> = {
   sm: "px-4 py-2 text-sm",
-  md: "px-6 py-3 text-base",
-  lg: "px-8 py-4 text-lg",
+  md: "px-6 py-2.5 text-sm",
+  lg: "px-8 py-3.5 text-base",
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -36,9 +36,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={cn(
           "inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-200 cursor-pointer",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2",
-          "disabled:opacity-50 disabled:cursor-not-allowed",
-          "active:scale-[0.98]",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+          "disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none",
+          "active:scale-[0.97]",
           variants[variant],
           sizes[size],
           className
