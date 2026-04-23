@@ -25,8 +25,9 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="py-20 px-4 relative">
-      <div className="section-divider absolute top-0 left-0 right-0" />
+    <section className="py-20 px-4">
+      {/* Divider */}
+      <div className="section-divider mb-20" />
 
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-14">
@@ -38,7 +39,7 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
           {/* Connector line (desktop) */}
           <div className="hidden md:block absolute top-12 left-[20%] right-[20%] h-[1px] bg-gradient-to-r from-[#f97316]/30 via-[#ef4444]/30 to-[#22c55e]/30" />
 
@@ -48,14 +49,12 @@ export function HowItWorks() {
               <div className="relative inline-flex mb-6">
                 <div
                   className="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                  style={{
-                    backgroundColor: `${step.color}10`,
-                  }}
+                  style={{ backgroundColor: `${step.color}15` }}
                 >
                   <step.icon className="w-7 h-7" style={{ color: step.color }} />
                 </div>
                 <span
-                  className="absolute -top-2 -right-2 w-7 h-7 rounded-full text-white text-xs font-bold flex items-center justify-center shadow-lg"
+                  className="absolute -top-2 -right-2 w-7 h-7 rounded-full text-white text-xs font-bold flex items-center justify-center"
                   style={{ backgroundColor: step.color, boxShadow: `0 4px 15px ${step.color}40` }}
                 >
                   {i + 1}
@@ -63,7 +62,7 @@ export function HowItWorks() {
               </div>
 
               <h3 className="font-semibold text-lg mb-2 text-[var(--foreground)]">{step.title}</h3>
-              <p className="text-sm text-[var(--muted)] leading-relaxed">
+              <p className="text-sm text-[var(--muted)] leading-relaxed max-w-[250px] mx-auto">
                 {step.description}
               </p>
             </div>

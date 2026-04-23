@@ -5,8 +5,9 @@ import { getScoreBracket } from "@/lib/utils/constants";
 
 export function SampleRoasts() {
   return (
-    <section className="py-20 px-4 relative">
-      <div className="section-divider absolute top-0 left-0 right-0" />
+    <section className="py-20 px-4">
+      {/* Divider */}
+      <div className="section-divider mb-20" />
 
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
@@ -18,14 +19,14 @@ export function SampleRoasts() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {SAMPLE_ROASTS.map((roast, i) => {
             const bracket = getScoreBracket(roast.score);
             return (
               <Card
                 key={i}
                 hover
-                className="flex flex-col relative overflow-hidden group"
+                className="flex flex-col relative overflow-hidden"
               >
                 {/* Score-colored top accent line */}
                 <div
@@ -42,7 +43,7 @@ export function SampleRoasts() {
                     >
                       {roast.score}
                     </span>
-                    <span className="text-sm text-[var(--muted)]/60">/100</span>
+                    <span className="text-sm text-[var(--muted)]">/100</span>
                   </div>
                   <Badge variant="muted">{roast.industry}</Badge>
                 </div>

@@ -16,14 +16,12 @@ export default function HomePage() {
 
       {/* Final CTA */}
       <section className="py-24 px-4 text-center relative">
-        <div className="section-divider absolute top-0 left-0 right-0" />
+        <div className="section-divider mb-24" />
 
         {/* Background glow */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[var(--accent)]/[0.06] rounded-full blur-[100px]" />
-        </div>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[var(--accent)] opacity-[0.05] rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="max-w-2xl mx-auto relative z-10">
+        <div className="max-w-2xl mx-auto relative">
           <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl font-bold mb-4 text-[var(--foreground)]">
             Ready to Face the Truth?
           </h2>

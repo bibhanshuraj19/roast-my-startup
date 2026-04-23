@@ -20,8 +20,9 @@ function getScoreColor(score: number) {
 
 export function RecentRoasts() {
   return (
-    <section className="py-20 px-4 relative">
-      <div className="section-divider absolute top-0 left-0 right-0" />
+    <section className="py-20 px-4">
+      {/* Divider */}
+      <div className="section-divider mb-20" />
 
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
@@ -33,7 +34,7 @@ export function RecentRoasts() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {recentRoasts.map((roast, i) => {
             const color = getScoreColor(roast.score);
             return (

@@ -117,7 +117,7 @@ export default async function ResultPage({ params }: Props) {
 
   return (
     <div className="py-8 sm:py-12 px-4">
-      <div className="max-w-2xl mx-auto space-y-6 stagger-children">
+      <div className="max-w-2xl mx-auto space-y-6">
         {/* Idea recap */}
         <div className="text-center mb-2">
           <p className="text-sm text-[var(--muted)] mb-1">The idea:</p>
