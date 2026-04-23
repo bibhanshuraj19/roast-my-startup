@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔥 RoastMyStartup.in
+
+AI-powered startup idea roasting platform. Get a brutally honest score, funny roast, and a practical 7-day validation plan — all shareable as a card.
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router) + TypeScript
+- **Styling**: Tailwind CSS v4
+- **Database**: Supabase (PostgreSQL)
+- **AI**: Nebius API (OpenAI-compatible) — GPT-4o-mini
+- **Fonts**: Inter + Space Grotesk via `next/font`
+- **Animations**: Framer Motion
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
+
+```bash
+npm install
+```
+
+2. **Set up environment variables:**
+
+```bash
+cp .env.example .env.local
+```
+
+Fill in your Supabase and Nebius API keys.
+
+3. **Run database migrations:**
+
+Apply the SQL files in `supabase/migrations/` to your Supabase project.
+
+4. **Start the dev server:**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/
+│   ├── layout.tsx                    # Root layout
+│   ├── page.tsx                      # Homepage
+│   ├── globals.css                   # Design system & theme tokens
+│   ├── roast/page.tsx                # Roast submission form
+│   ├── r/[slug]/page.tsx             # Result page (dynamic)
+│   ├── gallery/page.tsx              # Public roast gallery
+│   ├── pricing/page.tsx              # Pricing tiers
+│   └── api/generate-roast/route.ts   # AI roast generation endpoint
+├── components/
+│   ├── layout/                       # Header, Footer
+│   ├── home/                         # Hero, SampleRoasts, HowItWorks, RecentRoasts
+│   ├── roast/                        # RoastForm, LoadingRoast
+│   ├── result/                       # ScoreGauge, VerdictBlock, ShareActions, etc.
+│   └── ui/                           # Button, Card, Input, Textarea, Select, Badge
+├── lib/
+│   ├── ai/                           # OpenAI client, prompts, schema, generateRoast
+│   ├── db/                           # Supabase clients, roast CRUD
+│   ├── moderation/                   # Input validation (Zod)
+│   ├── sharing/                      # Slug generation
+│   └── utils/                        # cn(), constants
+├── types/                            # TypeScript types (roast, payment)
+└── supabase/migrations/              # Database schema SQL
+```
 
-## Learn More
+## Routes
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Route | Description |
+|-------|-------------|
+| `/` | Hero with input box, sample roasts, how it works |
+| `/roast` | Multi-section form with stage chips & optional fields |
+| `/r/[slug]` | Full report: score gauge, verdict, roast, 7-day plan |
+| `/gallery` | Filterable grid of public roasts |
+| `/pricing` | Free / Deep Report ₹99 / Founder Pro ₹299 |
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set the environment variables in your Vercel project dashboard and deploy.
+
+## License
+
+Private — All rights reserved.
