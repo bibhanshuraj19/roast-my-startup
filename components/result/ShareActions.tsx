@@ -38,54 +38,37 @@ export function ShareActions({ slug, shareText, score }: ShareActionsProps) {
         Share Your Roast
       </h3>
 
-      {/* Share text preview */}
-      <div className="bg-[var(--surface-elevated)] border border-white/[0.06] rounded-xl p-4 mb-4 max-w-md mx-auto">
-        <p className="text-sm text-[var(--foreground)]/80 italic">&ldquo;{shareText}&rdquo;</p>
+      <div className="bg-[var(--surface-elevated)] border border-[var(--border-color)] rounded-xl p-4 mb-4 max-w-md mx-auto">
+        <p className="text-sm text-[var(--foreground)] italic">&ldquo;{shareText}&rdquo;</p>
       </div>
 
-      <div className="flex items-center justify-center gap-3 flex-wrap">
+      <div className="flex items-center justify-center gap-2 flex-wrap">
         <a href={twitterUrl} target="_blank" rel="noopener noreferrer">
-          <Button variant="outline" size="sm" className="gap-2">
-            <ExternalLink className="w-4 h-4" />
-            Twitter / X
+          <Button variant="outline" size="sm" className="gap-1.5">
+            <ExternalLink className="w-3.5 h-3.5" />
+            Twitter
           </Button>
         </a>
 
         <a href={linkedinUrl} target="_blank" rel="noopener noreferrer">
-          <Button variant="outline" size="sm" className="gap-2">
-            <ExternalLink className="w-4 h-4" />
+          <Button variant="outline" size="sm" className="gap-1.5">
+            <ExternalLink className="w-3.5 h-3.5" />
             LinkedIn
           </Button>
         </a>
 
         <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-          <Button variant="outline" size="sm" className="gap-2">
+          <Button variant="outline" size="sm" className="gap-1.5">
             💬 WhatsApp
           </Button>
         </a>
 
-        <Button
-          variant="outline"
-          size="sm"
-          className="gap-2"
-          onClick={handleCopy}
-        >
+        <Button variant="outline" size="sm" className="gap-1.5" onClick={handleCopy}>
           {copied ? (
-            <>
-              <Check className="w-4 h-4 text-green-400" />
-              Copied!
-            </>
+            <><Check className="w-3.5 h-3.5" style={{ color: '#4ade80' }} /> Copied!</>
           ) : (
-            <>
-              <Copy className="w-4 h-4" />
-              Copy Link
-            </>
+            <><Copy className="w-3.5 h-3.5" /> Copy</>
           )}
-        </Button>
-
-        <Button variant="ghost" size="sm" className="gap-2">
-          <Download className="w-4 h-4" />
-          Download Card
         </Button>
       </div>
     </div>

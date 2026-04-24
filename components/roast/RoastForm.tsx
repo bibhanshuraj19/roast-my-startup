@@ -146,8 +146,8 @@ export function RoastForm() {
                   onClick={() => updateField("stage", opt.value)}
                   className={`px-4 py-2.5 rounded-xl text-sm font-medium border transition-all duration-200 cursor-pointer ${
                     form.stage === opt.value
-                      ? "bg-gradient-to-r from-[var(--accent)] to-[#ef4444] text-white border-transparent shadow-lg shadow-orange-500/20"
-                      : "bg-[var(--surface-elevated)] text-[var(--muted)] border-white/[0.06] hover:border-[var(--accent)]/40 hover:text-[var(--foreground)]"
+                      ? "bg-gradient-to-r from-[var(--accent)] to-[#ef4444] text-white border-transparent"
+                      : "bg-[var(--surface-elevated)] text-[var(--muted)] border-[var(--border-color)] hover:text-[var(--foreground)]"
                   }`}
                 >
                   {opt.emoji} {opt.label}
@@ -178,7 +178,7 @@ export function RoastForm() {
 
         {/* Optional Fields */}
         {showOptional && (
-          <div className="space-y-4 mt-4 pt-4 border-t border-white/[0.06] animate-fade-in">
+          <div className="space-y-4 mt-4 pt-4 border-t border-[var(--border-color)]">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Select
                 id="founderType"
@@ -228,9 +228,10 @@ export function RoastForm() {
                   onClick={() => updateField(toggle.key, !form[toggle.key])}
                   className={`px-4 py-2 rounded-xl text-sm font-medium border transition-all cursor-pointer ${
                     form[toggle.key]
-                      ? "bg-green-500/10 text-green-400 border-green-500/30"
-                      : "bg-[var(--surface-elevated)] text-[var(--muted)] border-white/[0.06] hover:border-[var(--muted)]/30"
+                      ? "text-white border-transparent"
+                      : "bg-[var(--surface-elevated)] text-[var(--muted)] border-[var(--border-color)]"
                   }`}
+                  style={form[toggle.key] ? { backgroundColor: 'rgba(34,197,94,0.15)', color: '#4ade80', borderColor: 'rgba(34,197,94,0.3)' } : {}}
                 >
                   {form[toggle.key] ? "✓" : "○"} {toggle.label}
                 </button>

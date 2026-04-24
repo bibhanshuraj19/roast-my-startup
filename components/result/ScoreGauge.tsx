@@ -32,33 +32,11 @@ export function ScoreGauge({ score }: ScoreGaugeProps) {
   }, [score]);
 
   return (
-    <div
-      className="score-gauge mx-auto"
-      style={{
-        "--score-color": bracket.color,
-        filter: `drop-shadow(0 0 25px ${bracket.color}30)`,
-      } as React.CSSProperties}
-    >
-      <svg
-        viewBox="0 0 180 180"
-        className="w-full h-full"
-        style={{ transform: "rotate(-90deg)" }}
-      >
-        {/* Background circle */}
+    <div className="score-gauge mx-auto">
+      <svg viewBox="0 0 180 180" className="w-full h-full" style={{ transform: "rotate(-90deg)" }}>
+        <circle cx="90" cy="90" r={radius} fill="none" stroke="var(--border-color)" strokeWidth="10" />
         <circle
-          cx="90"
-          cy="90"
-          r={radius}
-          fill="none"
-          stroke="rgba(255,255,255,0.06)"
-          strokeWidth="10"
-        />
-        {/* Progress arc */}
-        <circle
-          cx="90"
-          cy="90"
-          r={radius}
-          fill="none"
+          cx="90" cy="90" r={radius} fill="none"
           stroke={bracket.color}
           strokeWidth="10"
           strokeLinecap="round"
@@ -68,25 +46,12 @@ export function ScoreGauge({ score }: ScoreGaugeProps) {
         />
       </svg>
 
-      {/* Score text overlay */}
       <div className="score-gauge-text">
-        <span
-          className="text-5xl font-bold font-[family-name:var(--font-heading)]"
-          style={{
-            color: bracket.color,
-            textShadow: `0 0 20px ${bracket.color}40`,
-          }}
-        >
+        <span className="text-5xl font-bold font-[family-name:var(--font-heading)]" style={{ color: bracket.color }}>
           {animatedScore}
         </span>
         <span className="text-sm text-[var(--muted)] font-medium">/100</span>
-        <span
-          className="text-xs font-semibold mt-1.5 px-3 py-1 rounded-full"
-          style={{
-            backgroundColor: `${bracket.color}15`,
-            color: bracket.color,
-          }}
-        >
+        <span className="text-xs font-semibold mt-1 px-2.5 py-0.5 rounded-full" style={{ backgroundColor: `${bracket.color}20`, color: bracket.color }}>
           {bracket.emoji} {bracket.label}
         </span>
       </div>

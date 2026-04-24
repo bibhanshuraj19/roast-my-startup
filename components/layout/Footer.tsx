@@ -3,60 +3,55 @@ import { Flame } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] bg-[var(--surface)] mt-auto">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="border-t border-[var(--border-color)] bg-[var(--surface)]">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
-          <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--accent)] to-[#ef4444] flex items-center justify-center shadow-lg shadow-orange-500/15">
-                <Flame className="w-4 h-4 text-white" />
+          <div>
+            <Link href="/" className="inline-flex items-center gap-2 mb-3">
+              <div className="w-7 h-7 rounded-md bg-gradient-to-br from-[var(--accent)] to-[#ef4444] flex items-center justify-center">
+                <Flame className="w-3.5 h-3.5 text-white" />
               </div>
-              <span className="font-bold text-lg text-[var(--foreground)]">RoastMyStartup</span>
+              <span className="font-bold text-[var(--foreground)]">RoastMyStartup</span>
             </Link>
-            <p className="text-sm text-[var(--muted)] max-w-md mb-4 leading-relaxed">
-              Get your startup idea roasted by AI. Brutally honest feedback for
-              Indian students, indie hackers, and first-time founders.
-            </p>
-            <p className="text-xs text-[var(--muted)]/60">
-              Built with 🔥 for the Indian startup ecosystem
+            <p className="text-sm text-[var(--muted)] leading-relaxed">
+              Brutally honest AI feedback for Indian students, indie hackers, and first-time founders.
             </p>
           </div>
 
-          {/* Links */}
+          {/* Product Links */}
           <div>
             <h4 className="font-semibold text-sm mb-3 text-[var(--foreground)]">Product</h4>
-            <div className="flex flex-col gap-2.5">
-              <Link href="/roast" className="text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors duration-200">
+            <div className="space-y-2">
+              <Link href="/roast" className="block text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
                 Roast an Idea
               </Link>
-              <Link href="/gallery" className="text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors duration-200">
+              <Link href="/gallery" className="block text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
                 Gallery
               </Link>
-              <Link href="/pricing" className="text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors duration-200">
+              <Link href="/pricing" className="block text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
                 Pricing
               </Link>
             </div>
           </div>
 
+          {/* Legal */}
           <div>
             <h4 className="font-semibold text-sm mb-3 text-[var(--foreground)]">Legal</h4>
-            <div className="flex flex-col gap-2.5">
-              <span className="text-sm text-[var(--muted)]/60 cursor-default">Privacy Policy</span>
-              <span className="text-sm text-[var(--muted)]/60 cursor-default">Terms of Service</span>
+            <div className="space-y-2">
+              <span className="block text-sm text-[var(--muted)]/50">Privacy Policy</span>
+              <span className="block text-sm text-[var(--muted)]/50">Terms of Service</span>
             </div>
           </div>
         </div>
 
-        {/* Disclaimer */}
-        <div className="mt-8 pt-6 border-t border-white/[0.04]">
+        {/* Bottom */}
+        <div className="mt-8 pt-6 border-t border-[var(--border-color)]">
           <p className="text-xs text-[var(--muted)]/50 leading-relaxed">
-            <strong className="text-[var(--muted)]/70">Disclaimer:</strong> AI feedback is not financial, legal, or investment advice. 
-            Public roasts may be visible if you choose public mode. Do not enter confidential business 
-            information. This product gives educational feedback only.
+            <strong className="text-[var(--muted)]/70">Disclaimer:</strong> AI feedback is not financial, legal, or investment advice.
           </p>
-          <p className="text-xs text-[var(--muted)]/40 mt-3">
-            © {new Date().getFullYear()} RoastMyStartup.in. All rights reserved.
+          <p className="text-xs text-[var(--muted)]/40 mt-2">
+            © {new Date().getFullYear()} RoastMyStartup.in
           </p>
         </div>
       </div>

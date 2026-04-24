@@ -20,44 +20,35 @@ function getScoreColor(score: number) {
 
 export function RecentRoasts() {
   return (
-    <section className="py-20 px-4">
-      {/* Divider */}
-      <div className="section-divider mb-20" />
-
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl font-bold mb-4 text-[var(--foreground)]">
+    <section className="py-16 px-4 border-t border-[var(--border-color)]">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl font-bold mb-3">
             Latest Roasts
           </h2>
-          <p className="text-[var(--muted)] text-lg">
+          <p className="text-[var(--muted)] text-base">
             Fresh startup ideas getting the reality check they needed
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {recentRoasts.map((roast, i) => {
             const color = getScoreColor(roast.score);
             return (
               <div
                 key={i}
-                className="p-4 rounded-xl border border-white/[0.06] bg-[var(--surface)] hover:bg-[var(--surface-elevated)] hover:border-white/[0.1] transition-all duration-300 cursor-pointer group"
+                className="p-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] hover:bg-[var(--surface-elevated)] transition-colors"
               >
                 <div className="flex items-start justify-between gap-3 mb-2">
-                  <p className="font-medium text-sm text-[var(--foreground)]/90 line-clamp-1 group-hover:text-[var(--foreground)] transition-colors">
+                  <p className="font-medium text-sm text-[var(--foreground)] line-clamp-1 flex-1">
                     &ldquo;{roast.idea}&rdquo;
                   </p>
-                  <div className="flex items-center gap-1.5 shrink-0">
-                    <span
-                      className="w-2 h-2 rounded-full shrink-0"
-                      style={{ backgroundColor: color, boxShadow: `0 0 8px ${color}60` }}
-                    />
-                    <span
-                      className="text-lg font-bold font-[family-name:var(--font-heading)]"
-                      style={{ color }}
-                    >
-                      {roast.score}
-                    </span>
-                  </div>
+                  <span
+                    className="text-base font-bold font-[family-name:var(--font-heading)] shrink-0"
+                    style={{ color }}
+                  >
+                    {roast.score}
+                  </span>
                 </div>
                 <p className="text-xs text-[var(--muted)] italic">{roast.verdict}</p>
               </div>
@@ -65,7 +56,7 @@ export function RecentRoasts() {
           })}
         </div>
 
-        <div className="text-center mt-10">
+        <div className="text-center mt-8">
           <Link href="/gallery">
             <Button variant="outline" className="gap-2">
               View All Roasts
