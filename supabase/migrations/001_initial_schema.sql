@@ -31,6 +31,7 @@ create table if not exists roasts (
 
   -- AI output fields
   score integer not null,
+  score_label text,
   verdict text not null,
   roast text not null,
   what_is_good jsonb not null,
@@ -43,6 +44,7 @@ create table if not exists roasts (
   share_text text,
   share_card_title text,
   share_card_subtitle text,
+  og_image_url text,
 
   -- Moderation flags
   is_public boolean default true,
