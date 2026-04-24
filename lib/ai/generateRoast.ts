@@ -8,15 +8,25 @@ export async function generateRoast(
 ): Promise<ValidatedRoastReport> {
   const userPrompt = buildUserPrompt(input);
 
-  const completion = await openai.chat.completions.create({
-    model: "openai/gpt-oss-120b",
-    messages: [
-      { role: "system", content: SYSTEM_PROMPT },
-      { role: "user", content: userPrompt },
-    ],
-    temperature: 0.9,
-    max_tokens: 2000,
-  });
+  let completion;
+  try {
+    completion = await openai.chat.completions.create({
+      model: "openai/gpt-oss-120b",
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        { role: "user", content: userPrompt },
+      ],
+      temperature: 0.9,
+      max_tokens: 2000,
+    });
+  } catch (err: unknown) {
+    const error = err as { status?: number; message?: string };
+    if (error.status === 401) {
+      console.error("Nebius API key is invalid or expired. Get a new key from https://studio.nebius.com/");
+      throw new Error("AI service authentication failed. The API key may have expired — please contact the admin.");
+    }
+    throw new Error(`AI service error: ${error.message || "Unknown error"}`);
+  }
 
   const content = completion.choices[0]?.message?.content;
   if (!content) {
@@ -39,3 +49,4 @@ export async function generateRoast(
 
   return result.data;
 }
+
