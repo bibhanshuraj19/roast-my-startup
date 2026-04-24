@@ -11,13 +11,14 @@ export async function generateRoast(
   let completion;
   try {
     completion = await openai.chat.completions.create({
-      model: "openai/gpt-oss-120b",
+      model: "meta-llama/Meta-Llama-3.1-70B-Instruct",
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         { role: "user", content: userPrompt },
       ],
       temperature: 0.9,
-      max_tokens: 2000,
+      max_tokens: 3000,
+      response_format: { type: "json_object" },
     });
   } catch (err: unknown) {
     const error = err as { status?: number; message?: string };
