@@ -5,6 +5,6 @@ if (!process.env.NEBIUS_API_KEY) {
 }
 
 export const openai = new OpenAI({
-  baseURL: "https://api.studio.nebius.ai/v1/",
+  baseURL: "https://api.tokenfactory.us-central1.nebius.com/v1/",
   apiKey: process.env.NEBIUS_API_KEY || "",
 });

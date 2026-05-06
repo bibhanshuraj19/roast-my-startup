@@ -11,7 +11,7 @@ export async function generateRoast(
   let completion;
   try {
     completion = await openai.chat.completions.create({
-      model: "meta-llama/Meta-Llama-3.1-70B-Instruct",
+      model: "Qwen/Qwen3.5-397B-A17B",
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         { role: "user", content: userPrompt },
