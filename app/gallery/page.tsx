@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata   = {
   title: "Gallery — Best Startup Roasts | RoastMyStartup.in",
   description:
     "Browse the funniest, most promising, and most savage startup idea roasts.",
